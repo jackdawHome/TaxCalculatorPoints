@@ -28,6 +28,6 @@ public class TaxPerBracket {
     }
 
     public String toString() {
-        return String.format("%s tax = %.2f",bracket.toString(), bracketTaxPortion);
+        return String.format("Tax = %.2f %s", bracketTaxPortion, bracket.toString());
     }
 }

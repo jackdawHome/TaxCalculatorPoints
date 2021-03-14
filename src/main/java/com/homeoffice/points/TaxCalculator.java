@@ -60,8 +60,8 @@ public class TaxCalculator {
                 TaxCalculationResult result = TaxCalculationService.calculate(amount, tb.getTax_brackets());
 
                 System.out.printf("Total Tax = %.2f  \r\n", result.getTaxAmount());
-                System.out.printf("EffectiveTaxRate = %.3f \r\n", result.getEffectiveTaxRate());
                 result.getTaxPerBracket().stream().forEach(s -> System.out.printf("%s \r\n", s.toString()));
+                System.out.printf("Effective Tax Rate = %.3f%% \r\n", result.getEffectiveTaxRate());
 
             } else if (response.getReturnCode() == 500) {
                 System.out.println("Not your fault! Try again later.");
