@@ -31,7 +31,11 @@ public class TaxCalculator {
 
             try {
                 amount = scan.nextBigDecimal().setScale(2);
-                correctInput = true;
+                if (amount.compareTo(BigDecimal.valueOf(0)) >=  0) {
+                    correctInput = true;
+                } else {
+                    System.out.println("Incorrect value. Salary cannot have negative value.");
+                }
             } catch (ArithmeticException e ) {
                 System.out.println("Incorrect value. Only 2 digits after decimal point permitted.");
             } catch ( InputMismatchException e) {

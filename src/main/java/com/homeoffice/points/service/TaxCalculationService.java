@@ -21,6 +21,10 @@ public class TaxCalculationService {
         TaxCalculationResult result;
         BigDecimal zero = BigDecimal.valueOf(0L,2);
         List<TaxPerBracket> list = new ArrayList<>();
+        if (salary == null || salary.compareTo(zero) < 0) {
+            throw new IllegalArgumentException("Salary has incorrect value.");
+        }
+
         if (salary.compareTo(zero) == 0 || brackets.size() == 0) {
             return new TaxCalculationResult(zero, zero, list);
         }
@@ -31,7 +35,9 @@ public class TaxCalculationService {
             // checks if salary fits into the bracket
             if (salary.compareTo(bracket.getMin()) >= 0) {
                 // calculates bracket tax portion
-                BigDecimal tax = (salary.min(bracket.getMax()).subtract(bracket.getMin()) ).multiply(bracket.getRate()).setScale(2, RoundingMode.HALF_UP);
+                BigDecimal tax = ((salary.subtract(bracket.getMin()))
+                        .min(bracket.getMax().subtract(bracket.getMin()) ))
+                        .multiply(bracket.getRate()).setScale(2, RoundingMode.HALF_UP);
                 // calculates total tax
                 totalTax = totalTax.add(tax);
                 list.add(new TaxPerBracket(bracket, tax));
@@ -39,7 +45,6 @@ public class TaxCalculationService {
                 list.add(new TaxPerBracket(bracket, zero));
             }
         }
-
         result = new TaxCalculationResult(totalTax, totalTax.divide(salary, 3, RoundingMode.HALF_UP), list);
 
         return result;

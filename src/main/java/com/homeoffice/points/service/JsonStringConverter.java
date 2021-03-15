@@ -6,12 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JsonStringConverter {
 
     /**
-     *  Converts provided data to a specific class type
+     *  Converts json content into instance of given type
      * @param data - json string
      * @param type - class type
      * @param <T>
-     * @return
+     * @return object of given type
      * @throws JsonProcessingException
+     * @throws IllegalArgumentException
      */
     public static <T> T convert(String data, Class<T> type) throws JsonProcessingException, IllegalArgumentException {
         ObjectMapper objectMapper = new ObjectMapper();
