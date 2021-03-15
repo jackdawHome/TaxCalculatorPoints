@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+  tax-brackets-server:
+    image: "ptsdocker16/interview-test-server"
+    ports:
+      - "5000:5000"
+
+  tax-brackets-app:
+    image: "jackdawhome/tax_calculator_points:latest"
+    network_mode: host
+    depends_on:
+      - tax-brackets-server
+    stdin_open: true
+    tty: true
+    command: /bin/sh
