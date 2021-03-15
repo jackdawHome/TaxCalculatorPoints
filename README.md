@@ -28,7 +28,12 @@ Providing that java 11 is available on your computer and the server component (i
 target/TaxCalculatorPoints-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
-If using dockers, installation can be automated by downloading the docker-compose.yml file and running docker-compose up -d in the same directory. This will install both the server and the applicaton component images and run them in containers. To use the application it will be required to issue:
+If using dockers, installation can be automated by downloading the docker-compose.yml file and running
+```
+docker-compose up -d
+```
+
+This will install both the server and the applicaton component images and run them in containers. To use the application it will be required to issue:
 ```
 docker attach <application-container-name>
 ```
