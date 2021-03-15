@@ -17,15 +17,18 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 The application uses an external server to get tax brackets for a specific year. The server could be found at https://github.com/Points/interview-test-server.
-To ran TaxCalculator from a commend line java 11 should be installed.
+To run TaxCalculator from a command line java 11 should be installed.
 
 Alternatively, you can use Docker images  provided in the Docker repository (see [Installing](#installing)) 
 
-
-```
-Give examples
-```
-
 ### Installing
+Providing that java 11 is available on your computer and the server component (interview-test-server) is already installed, download the following jar file:
 
-A step by step series of examples that tell you how to get a development env running
+
+
+
+### Using the Application
+
+```
+java -jar /<your_folder>/TaxCalculatorPoints.jar
+```
